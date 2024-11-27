@@ -35,7 +35,7 @@ function getCurrentDate() {
   //   month: currentDate.getMonth() + 1  // Mois (0-indexé, donc on ajoute 1)
   // };
   return {
-    day: 11,  // Jour du mois
+    day: 25,  // Jour du mois
     month: 12  // Mois (0-indexé, donc on ajoute 1)
   };
 }
@@ -87,6 +87,7 @@ function generateCalendar() {
         // Si elle a été retournée, marquer la case comme révélée
         dayElement.classList.add('revealed');
         dayElement.style.backgroundColor = color; // Affiche la couleur du jour
+        dayElement.innerText = '';
 
         // Si c'est le 24ème jour, afficher l'image du Père Noël
         if (day === 24) {
