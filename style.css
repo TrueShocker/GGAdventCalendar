@@ -1,0 +1,144 @@
+/* 1. Fond d'écran et style général */
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('img/christmas-background.jpg'); /* Fond d'écran de Noël */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Conteneur principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* 3. Titre et sous-titre */
+h1 {
+  font-size: 3em;
+  color: #d9534f; /* Rouge Noël */
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-style: italic;
+  color: #f7b731; /* Jaune doré */
+  margin: 0 0 20px 0;
+}
+
+/* Sous-titre */
+.subtitle {
+  font-size: 1.2rem; /* Plus petit que le titre */
+  font-style: italic; /* Italique */
+  text-align: center; /* Centré comme le titre */
+  margin-bottom: 20px; /* Espacement avec le reste */
+  color: #f7b731; /* Une couleur qui rappelle Noël */
+}
+
+
+/* 4. Style des cases du calendrier */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 6 colonnes */
+  grid-template-rows: repeat(6, 1fr); /* 4 lignes */
+  gap: 5px;
+  justify-items: center; /* Centrer chaque case */
+  width: 80%; /* Largeur maximale du calendrier */
+  max-width: 600px; /* Largeur maximale pour éviter les grandes tailles */
+  margin: 20px auto; /* Centrer le calendrier */
+}
+
+.calendar .day {
+  width: 80px; /* Largeur de la case */
+  height: 80px; /* Hauteur de la case */
+  background-color: #f1f1f1; /* Couleur neutre pour les cases */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: #f7b731; /* Rouge Noël pour les chiffres */
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* 5. Case révélée */
+.calendar .day.revealed {
+  color: white;
+  font-size: 1.5em;
+  background-color: transparent; /* Case sans fond coloré après révélation */
+  border-radius: 10px;
+  box-shadow: none; /* Enlever l'ombre pour la case révélée */
+}
+
+/* 6. Animation de rotation pour la case */
+.calendar .day.revealed {
+  transform: rotate(0deg);
+  transition: transform 2s ease-in-out;
+}
+
+/* 7. Case du jour 24 avec image du Père Noël */
+.calendar .day.day-24 img {
+  width: 70%;
+  height: 70%;
+}
+
+/* 8. Légende */
+.legend {
+  display: flex;
+  flex-wrap: wrap; /* Permet de passer à la ligne */
+  justify-content: center; /* Centre les éléments */
+  gap: 10px; /* Espacement entre les éléments */
+  max-width: 600px; /* Largeur adaptée à 2 éléments par ligne */
+  margin: 20px auto; /* Centre la légende horizontalement */
+}
+
+.legend .candy {
+  display: flex;
+  align-items: center; /* Aligne la pastille et le texte verticalement */
+  gap: 5px; /* Espacement entre la pastille et le texte */
+  width: calc(50% - 10px); /* Assure 2 éléments par ligne */
+  text-align: center;
+}
+
+
+.legend .candy .color {
+  width: 20px;
+  height: 20px;
+  background-color: transparent; /* Défaut avant spécification */
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.legend .candy img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* Style spécifique au texte de la légende */
+.legend .candy span {
+  font-size: 1rem; /* Taille du texte */
+  font-weight: bold; /* Mettre en gras */
+  color: #ececec; /* Couleur du texte */
+  font-style: italic; /* Italique */
+  margin-left: 5px; /* Espacement avec la pastille */
+}
+
+
+/* 9. Responsive pour les cases */
+@media (max-width: 768px) {
+  .calendar {
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes sur les petits écrans */
+    grid-template-rows: repeat(6, 1fr); /* 6 lignes pour garder la grille complète */
+    width: 90%; /* Réduit la largeur du calendrier pour les petits écrans */
+  }
+}
