@@ -96,16 +96,16 @@ h2 {
   display: flex;
   flex-wrap: wrap; /* Permet de passer à la ligne */
   justify-content: center; /* Centre les éléments */
-  gap: 10px; /* Espacement entre les éléments */
+  gap: 3px; /* Espacement entre les éléments */
   max-width: 600px; /* Largeur adaptée à 2 éléments par ligne */
-  margin: 20px auto; /* Centre la légende horizontalement */
+  margin: 10px auto; /* Centre la légende horizontalement */
 }
 
 .legend .candy {
   display: flex;
   align-items: center; /* Aligne la pastille et le texte verticalement */
-  gap: 5px; /* Espacement entre la pastille et le texte */
-  width: calc(50% - 10px); /* Assure 2 éléments par ligne */
+  gap: 3px; /* Espacement entre la pastille et le texte */
+  width: calc(50% - 2px); /* Assure 2 éléments par ligne */
   text-align: center;
 }
 
@@ -130,7 +130,10 @@ h2 {
   font-weight: bold; /* Mettre en gras */
   color: #ececec; /* Couleur du texte */
   font-style: italic; /* Italique */
-  margin-left: 5px; /* Espacement avec la pastille */
+  margin-left: 2px; /* Espacement avec la pastille */
+  white-space: nowrap; /* Empêche le texte de se couper sur plusieurs lignes */
+  overflow: hidden; /* Cache le texte excédentaire */
+  text-overflow: ellipsis; /* Affiche "..." à la fin si le texte est trop long */
 }
 
 
