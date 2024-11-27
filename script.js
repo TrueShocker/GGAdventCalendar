@@ -27,6 +27,7 @@ const days = [
 ];
 
 
+
 // Fonction pour obtenir la date actuelle
 function getCurrentDate() {
   const currentDate = new Date();
@@ -136,3 +137,19 @@ function revealDay(dayElement, color, day) {
 }
 
 generateCalendar();
+
+// Fonction qui gère le clic sur le bouton de reset
+document.getElementById('resetStorage').addEventListener('click', function () {
+  // Affiche un message de confirmation
+  const confirmReset = confirm('Êtes-vous sûr de vouloir réinitialiser le calendrier ? Cette action est irréversible.');
+
+  if (confirmReset) {
+    // Si l'utilisateur confirme, on vide le localStorage
+    localStorage.clear();
+    alert('Le calendrier a été réinitialisé.');
+    location.reload();
+  } else {
+    // Si l'utilisateur annule
+    alert('Réinitialisation annulée.');
+  }
+});

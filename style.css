@@ -145,3 +145,41 @@ h2 {
     width: 90%; /* Réduit la largeur du calendrier pour les petits écrans */
   }
 }
+
+/* Style pour le footer */
+footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Style pour le bouton de réinitialisation */
+.reset-btn-footer {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Effet au survol du bouton */
+.reset-btn-footer:hover {
+  background-color: #d32f2f;
+  transform: scale(1.1); /* Légère animation d'agrandissement */
+}
+
+/* Style pour l'icône */
+.reset-icon {
+  width: 24px; /* Ajuste la taille selon tes besoins */
+  height: 24px;
+}
