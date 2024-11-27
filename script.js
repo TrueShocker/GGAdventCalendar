@@ -30,13 +30,9 @@ const days = [
 // Fonction pour obtenir la date actuelle
 function getCurrentDate() {
   const currentDate = new Date();
-  // return {
-  //   day: currentDate.getDate(),  // Jour du mois
-  //   month: currentDate.getMonth() + 1  // Mois (0-indexé, donc on ajoute 1)
-  // };
   return {
-    day: 25,  // Jour du mois
-    month: 12  // Mois (0-indexé, donc on ajoute 1)
+    day: currentDate.getDate(),  // Jour du mois
+    month: currentDate.getMonth() + 1  // Mois (0-indexé, donc on ajoute 1)
   };
 }
 
