@@ -29,6 +29,8 @@ const days = [
 // Liste des jours où le screamer doit être joué. Ajoutez ou supprimez des valeurs selon votre besoin.
 const screamerDays = [3, 5, 13];
 
+const overriddenMonth = getMonthOverride();
+
 // Fonction pour obtenir la date actuelle
 // Helper to read "?month=NN" from the URL. When present, the calendar behaves as if it is that month.
 function getMonthOverride() {
@@ -43,10 +45,9 @@ function getMonthOverride() {
 
 function getCurrentDate() {
   const currentDate = new Date();
-  const override = getMonthOverride();
   return {
     day: currentDate.getDate(),
-    month: override ?? (currentDate.getMonth() + 1)
+    month: (currentDate.getMonth() + 1)
   };
 }
 
@@ -83,7 +84,7 @@ function generateCalendar() {
     dayElement.innerText = day; // Affiche le numéro du jour
 
     // Vérifier si le mois et le jour sont passés ou non
-    if (currentMonth < 12 || (currentMonth === 12 && currentDay < day)) {
+    if (currentMonth != overriddenMonth || (currentMonth === overriddenMonth && currentDay < day)) {
       dayElement.classList.add('locked'); // Ajoute une classe "verrouillée"
       dayElement.style.cursor = 'not-allowed'; // Change le curseur pour indiquer que l'élément est désactivé
 

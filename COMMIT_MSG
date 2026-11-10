@@ -1,6 +1,0 @@
-feat(screamer): add visual overlay and update sound to .flac
-- Introduced createVisualScreamer to display an image overlay when day 13 is revealed.
-- Updated screamer.js to play the new .flac audio file and show an image from img/screamer.png.
-- Adjusted timing for the overlay removal to 2 seconds.
-- Updated script.js to call playScreamer() and createVisualScreamer() on day 13.
-- Added new image and updated audio reference paths.
