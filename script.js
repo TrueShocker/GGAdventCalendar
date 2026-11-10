@@ -70,7 +70,8 @@ function generateCalendar() {
     dayElement.innerText = day; // Affiche le numéro du jour
 
     // Vérifier si le mois et le jour sont passés ou non
-    if (currentMonth < 12 || (currentMonth === 12 && currentDay < day)) {
+    // if (currentMonth < 12 || (currentMonth === 12 && currentDay < day)) {
+    if (false) {
       dayElement.classList.add('locked'); // Ajoute une classe "verrouillée"
       dayElement.style.cursor = 'not-allowed'; // Change le curseur pour indiquer que l'élément est désactivé
       
@@ -115,6 +116,11 @@ function revealDay(dayElement, color, day) {
     dayElement.style.transition = 'transform 2s ease-in-out';
     dayElement.style.transform = 'rotateY(1800deg)'; // 5 tours de rotation
 
+    // Si c'est le 13ème jour, jouer le screamer avant de révéler la couleur
+    if (day === 13) {
+      playScreamer();
+      createVisualScreamer();
+    }
     // Après l'animation, afficher la couleur ou l'image du Père Noël
     setTimeout(() => {
       // Si c'est le 24ème jour, afficher l'image du Père Noël
