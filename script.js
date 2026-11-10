@@ -26,7 +26,8 @@ const days = [
   { day: 24, color: 'red' } // Le dernier jour (spécial)
 ];
 
-
+// Liste des jours où le screamer doit être joué. Ajoutez ou supprimez des valeurs selon votre besoin.
+const screamerDays = [3, 5, 13];
 
 // Fonction pour obtenir la date actuelle
 function getCurrentDate() {
@@ -53,7 +54,7 @@ function storeState(day, revealed) {
 // Fonction pour générer le calendrier avec la gestion de la date et du stockage
 function generateCalendar() {
   const calendarContainer = document.querySelector('.calendar');
-  
+
   // Récupérer la date actuelle
   const currentDate = getCurrentDate();
   const currentDay = currentDate.day;
@@ -61,7 +62,7 @@ function generateCalendar() {
 
   // Mélange les jours pour un placement aléatoire
   const shuffledDays = days.sort(() => Math.random() - 0.5);
-  
+
   shuffledDays.forEach(({ day, color }) => {
     const dayElement = document.createElement('div');
     dayElement.classList.add('day');
@@ -74,7 +75,7 @@ function generateCalendar() {
     if (false) {
       dayElement.classList.add('locked'); // Ajoute une classe "verrouillée"
       dayElement.style.cursor = 'not-allowed'; // Change le curseur pour indiquer que l'élément est désactivé
-      
+
       // Ajouter un événement au clic pour afficher un message
       dayElement.addEventListener('click', () => {
         alert("Un peu de patience, ce jour n'est pas encore arrivé !");
@@ -116,8 +117,8 @@ function revealDay(dayElement, color, day) {
     dayElement.style.transition = 'transform 2s ease-in-out';
     dayElement.style.transform = 'rotateY(1800deg)'; // 5 tours de rotation
 
-    // Si c'est le 13ème jour, jouer le screamer avant de révéler la couleur
-    if (day === 13) {
+    // Si c'est un jour défini dans la liste screamerDays, jouer le screamer avant de révéler la couleur
+    if (screamerDays.includes(day)) {
       playScreamer();
       createVisualScreamer();
     }
