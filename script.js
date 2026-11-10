@@ -30,11 +30,23 @@ const days = [
 const screamerDays = [3, 5, 13];
 
 // Fonction pour obtenir la date actuelle
+// Helper to read "?month=NN" from the URL. When present, the calendar behaves as if it is that month.
+function getMonthOverride() {
+  const params = new URLSearchParams(window.location.search);
+  const m = params.get('month');
+  if (m !== null) {
+    const n = parseInt(m, 10);
+    if (n >= 1 && n <= 12) return n;
+  }
+  return null; // No override → use real month
+}
+
 function getCurrentDate() {
   const currentDate = new Date();
+  const override = getMonthOverride();
   return {
-    day: currentDate.getDate(),  // Jour du mois
-    month: currentDate.getMonth() + 1  // Mois (0-indexé, donc on ajoute 1)
+    day: currentDate.getDate(),
+    month: override ?? (currentDate.getMonth() + 1)
   };
 }
 
@@ -71,8 +83,7 @@ function generateCalendar() {
     dayElement.innerText = day; // Affiche le numéro du jour
 
     // Vérifier si le mois et le jour sont passés ou non
-    // if (currentMonth < 12 || (currentMonth === 12 && currentDay < day)) {
-    if (false) {
+    if (currentMonth < 12 || (currentMonth === 12 && currentDay < day)) {
       dayElement.classList.add('locked'); // Ajoute une classe "verrouillée"
       dayElement.style.cursor = 'not-allowed'; // Change le curseur pour indiquer que l'élément est désactivé
 
